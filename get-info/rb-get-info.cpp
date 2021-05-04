@@ -22,17 +22,23 @@ int main()
 	else {
 		char input;
 
+		cout << "RB-10 기준 좌표 작성됨" << endl;
+		cout << "1: 현재의 TCP 정보" << endl;
+		cout << "2: 현재의 Joint 정보" << endl;
+
+		Point current_point;
+		Joint current_joint;
+
 		while (true) {
 			cin >> input;
 			switch (input) {
 			case '1':
-				cobot.CobotInit();
+				current_point = cobot.GetCurrentTCP();
+				cout << "현재 TCP: "<<current_point << endl;
 				break;
 			case '2':
-				cobot.SetProgramMode(PG_MODE::REAL);
-				break;
-			case '3':
-				cobot.SetProgramMode(PG_MODE::SIMULATION);
+				current_joint = cobot.GetCurrentJoint();
+				cout << "현재 Joint: " << current_joint << endl;
 				break;
 			default:
 				cout << "Invalid input value" << endl;
